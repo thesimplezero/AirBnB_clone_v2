@@ -6,6 +6,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Float, Integer, Table
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
+from models.amenity import Amenity
+from models.review import Review
 import models
 from os import getenv
 
