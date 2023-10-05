@@ -6,6 +6,7 @@ This module provides a function to create a .tgz archive from web_static folder
 from fabric.api import local
 from datetime import datetime
 
+
 def do_pack():
     """Create a tar gzipped archive of the directory web_static."""
     # capture the current date and time
