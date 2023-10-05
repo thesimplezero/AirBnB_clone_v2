@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-
-# Install Nginx if not already installed and create necessary folders
+# Install nginx
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo mkdir -p /data/web_static/{shared,releases/test}
 
+# Create necessary folders if they don't exist
+sudo mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
 
-# Create a fake HTML file for testing
+# Create a fake HTML page for testing
 echo "<html>
   <head>
   </head>
@@ -15,8 +16,18 @@ echo "<html>
   </body>
 </html>" >> /data/web_static/releases/test/index.html
 
-# Create & recreate a symbolic link
-sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+# Specify source and target directories
+source_dir="/data/web_static/releases/test/"
+target_dir="/data/web_static/current"
+
+# Check if the symbolic link already exists
+if [ -L "$target_dir" ]; then
+    sudo rm "$target_dir"
+fi
+
+# Create a new symbolic link
+sudo ln -s "$source_dir" "$target_dir"
+
 
 # Give ownership to ubuntu user and group
 sudo chown -R ubuntu:ubuntu /data/
