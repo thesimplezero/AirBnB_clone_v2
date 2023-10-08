@@ -10,6 +10,7 @@ from datetime import datetime
 # Set the host IP addresses for web-01 && web-02
 env.hosts = ['54.208.71.253', '100.25.144.89']
 env.user = "ubuntu"
+env.key_filename = '~/.ssh/id_rsa'
 
 
 def do_pack():
