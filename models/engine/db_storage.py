@@ -28,7 +28,7 @@ class DBStorage():
         db = getenv("HBNB_MYSQL_DB")
         env = getenv("HBNB_ENV")
 
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
+        self.__engine = create_engine('mysql+mysqlconnector://{}:{}@{}/{}'
                                       .format(user, password, host, db),
                                       pool_pre_ping=True)
         if env == 'test':
